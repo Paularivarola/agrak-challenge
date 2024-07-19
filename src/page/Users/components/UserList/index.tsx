@@ -5,8 +5,9 @@ import { ParameterServices } from '../../services/users_services';
 import Loading from '../../../../components/Loading/Loading';
 import { useQuery } from '@tanstack/react-query';
 import { AxiosResponse } from 'axios';
-import ActionsList from './components/ActionsList';
+import ActionsList from '../ActionsList';
 import { useSEOHeadData } from '../../../../hooks/useSEOHeadData';
+import { StickyThead, StyledBox } from './styles';
 
 const UserList: React.FC = () => {
   const { isError, data, isLoading } = useQuery<AxiosResponse<User[]>>({ queryKey: ['getUsers'], queryFn: ParameterServices.getUsers, refetchOnWindowFocus: true });
@@ -22,12 +23,12 @@ const UserList: React.FC = () => {
   }
 
   return (
-    <Box style={{ border: '1px solid black', borderRadius: '2rem', width: '85vw' }} padding="2rem" marginTop="1rem">
+    <StyledBox padding="2rem" marginTop="1rem">
       {isLoading && <Loading repeatSkeleton={5} />}
       {data?.length > 0 ? (
         <Box overflow="auto" maxHeight="80vh" minHeight="80vh">
           <Table textColor="black" variant="simple" width="100%">
-            <Thead position="sticky" top={0} zIndex={1} bg="white">
+            <StickyThead position="sticky" top={0} zIndex={1} bg="white">
               <Tr textColor="black">
                 <Th textColor="black">Avatar</Th>
                 <Th textColor="black">First Name</Th>
@@ -35,7 +36,7 @@ const UserList: React.FC = () => {
                 <Th textColor="black">Email</Th>
                 <Th textColor="black">Actions</Th>
               </Tr>
-            </Thead>
+            </StickyThead>
 
             <Tbody>
               {data?.map((user: User) => (
@@ -57,7 +58,7 @@ const UserList: React.FC = () => {
       ) : (
         !isLoading && !isError && <Text textAlign="center">No hay resultados</Text>
       )}
-    </Box>
+    </StyledBox>
   );
 };
 

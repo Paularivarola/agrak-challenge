@@ -1,13 +1,12 @@
-import React from 'react';
 import { Menu, MenuButton, MenuList, MenuItem, IconButton, useToast } from '@chakra-ui/react';
 import { FiMoreVertical } from 'react-icons/fi';
 import { FiEdit2 } from 'react-icons/fi';
 import { FiTrash } from 'react-icons/fi';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { ParameterServices } from '../../../services/users_services';
-import { PublicRoutes } from '../../../../../models/routes';
+import { ParameterServices } from '../../services/users_services';
+import { PublicRoutes } from '../../../../models/routes';
 import { useNavigate } from 'react-router-dom';
-import { User } from '../../../interfaces/user';
+import { User } from '../../interfaces/user';
 
 const ActionsList = ({ id }: User) => {
   const toast = useToast();
@@ -40,7 +39,6 @@ const ActionsList = ({ id }: User) => {
   const handleEditUser = (id: User['id']) => navigate(`${PublicRoutes.USER_CREATE}/${id}`);
 
   const handleDelete = (id: User['id']) => deleteUserMutation.mutate(id);
-
 
   return (
     <Menu placement="start-start">

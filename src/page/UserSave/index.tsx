@@ -104,7 +104,7 @@ const UserSave: React.FC = () => {
   };
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" flexDirection="column" height="95vh" bg="gray.50" padding="4">
+    <ContainerStyled>
       <Text as="h2" fontSize="3xl" fontWeight="bold" textColor="black" m="2rem 6rem">
         {id ? 'Edit User' : 'Create User'}
       </Text>
@@ -174,7 +174,7 @@ const UserSave: React.FC = () => {
           isLoading && <Spinner />
         )}
       </Box>
-    </Box>
+    </ContainerStyled>
   );
 };
 

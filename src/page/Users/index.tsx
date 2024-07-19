@@ -11,7 +11,7 @@ const Users = () => {
     <Flex justifyContent="center" alignItems="center">
       <Box>
         <Flex justifyContent="end">
-          <ButtonCustom text="Add user" style={{ background: 'black' }} onClick={handleAddUser} />
+          <ButtonCustom text="Add user" onClick={handleAddUser} />
         </Flex>
         <UserList />
       </Box>
