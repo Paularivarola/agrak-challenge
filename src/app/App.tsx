@@ -11,7 +11,7 @@ const queryClient = new QueryClient({
     queries: {
       refetchOnWindowFocus: false,
       refetchOnReconnect: false,
-      refetchOnMount: false,
+      refetchOnMount: true,
       retry: 1,
       retryDelay: attempt => attempt * 1000,
     },
@@ -22,9 +22,9 @@ function App() {
     <ErrorBoundary>
       <Suspense fallback={<span>Cargando..</span>}>
         <QueryClientProvider client={queryClient}>
-            <ChakraProvider>
-                <Routes />
-            </ChakraProvider>
+          <ChakraProvider>
+            <Routes />
+          </ChakraProvider>
         </QueryClientProvider>
       </Suspense>
     </ErrorBoundary>
@@ -32,4 +32,3 @@ function App() {
 }
 
 export default App;
-
